@@ -95,14 +95,11 @@ bool List::contains(std::string item){
 void List::remove(int loc){
     Node *walker = head;
     Node *tailer = nullptr;
-    Node *tailer2 = nullptr;
-    for(int x = 0; x < loc + 1; x++){
-        tailer2 = tailer;
+    for(int x = 0; x < loc; x++){
         tailer = walker;
         walker = walker -> getNext();
     }
 
-    delete tailer;
-    tailer2 -> setNext(walker);
+    tailer -> setNext(walker -> getNext());
     delete walker;
 }
