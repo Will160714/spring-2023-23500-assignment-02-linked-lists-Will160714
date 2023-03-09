@@ -4,6 +4,7 @@
 class Node{
     private:
         std::string data;
+        Node *previous;
         Node *next;
     public:
         Node();
@@ -13,4 +14,5 @@ class Node{
         void setNext(Node *next);
         std::string getData();
         Node *getNext();
+        Node* getPrevious();
 };
