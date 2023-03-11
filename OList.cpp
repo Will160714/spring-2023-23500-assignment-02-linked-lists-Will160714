@@ -2,7 +2,6 @@
 
 OList::OList(){
     head = nullptr;
-    counter = 0;
 }
 
 OList::~OList(){
@@ -14,7 +13,8 @@ OList::~OList(){
         delete trailer;
         trailer = nullptr;
     }
-    counter = 0;
+    delete walker;
+    walker = nullptr;
 }
 
 /*
@@ -25,7 +25,6 @@ void OList::insert(std::string value){
     Node *tmp = new Node(value);
     tmp -> setNext(head);
     head = tmp;
-    counter++;
 }
 
 /*
@@ -89,34 +88,45 @@ void OList::remove(int location){
     if(walker == nullptr)
         return;
     
-    if(location == 0 && trailer == nullptr)
+    if(location == 0 && trailer == nullptr){
         head = walker -> getNext();
+    }
     else
         trailer -> setNext(walker -> getNext());
-    
+
     delete walker;
-    counter--;
 }
 
 /*
     Function reverses the order of the Nodes
 */
 void OList::reverse(){
-    Node *tmp = head;
-    while(tmp != nullptr){
-        tmp = tmp -> getNext();
+    Node *walker = head;
+    Node *tmp;
+    Node *trailer = nullptr;
+    Node *follower = nullptr;
+    Node *end = head;
+
+    while(end != nullptr){
+        end = end -> getNext();
     }
 
-    tmp = tmp -> getPrevious();
-
-    int count = 0;
-    while(count < counter){
-        tmp -> setNext(tmp -> getPrevious());
-        tmp = tmp -> getPrevious();
-        count++;
+    while(walker != nullptr){
+        tmp = walker -> getNext();
+        if(trailer != nullptr){
+            walker -> setNext(trailer);
+            if(follower == nullptr)
+                trailer -> setNext(end);
+            else
+                trailer -> setNext(follower);
+        }
+        follower = trailer;
+        trailer = walker;
+        walker = tmp;
     }
 
-    head = tmp;
+    head = trailer; 
+    return;
 }
 
 Node* OList::getHead(){
