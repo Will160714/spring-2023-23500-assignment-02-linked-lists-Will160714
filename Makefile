@@ -1,12 +1,10 @@
-OBJECTS=OList.o main.o Node.o List.o
-
-main: $(OBJECTS)
-	g++ -o main $(OBJECTS)
+main: main.o OList.o Node.o
+	g++ -o main main.o OList.o Node.o
 
 tests: tests.o OList.o Node.o 
 	g++ -o tests tests.o OList.o Node.o
 
-main.o: main.cpp List.h Node.h
+main.o: main.cpp OList.h Node.h
 
 tests.o: tests.cpp OList.h Node.h
 
@@ -17,4 +15,4 @@ Node.o: Node.cpp Node.h
 OList.o: OList.cpp OList.h Node.h
 
 clean:
-	rm -f $(OBJECTS) tests.o 
+	rm -f main.o Node.o OList.o tests.o 
