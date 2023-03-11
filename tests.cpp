@@ -7,6 +7,7 @@ TEST_CASE("Constructor"){
     CHECK(test -> getHead() == nullptr);
 }
 
+//Cannot reference a pointer after it is deleted
 TEST_CASE("Destructor"){
     OList *test = new OList;
     test -> insert("First");
@@ -68,6 +69,14 @@ TEST_CASE("Reverse"){
     test -> insert("1");
     test -> insert("2");
     test -> insert("3");
-    std::cout << test -> toString() << std::endl;
     test -> reverse();
+    CHECK(test -> toString() == "1 --> 2 --> 3 --> nullptr");
+    OList* test2 = new OList;
+    test2 -> insert("First");
+    test2 -> insert("Second");
+    test2 -> reverse();
+    CHECK(test2 -> toString() == "First --> Second --> nullptr");
+    OList* test3 = new OList;
+    test3 -> insert("0");
+    CHECK(test3 -> toString() == "0 --> nullptr");
 }
