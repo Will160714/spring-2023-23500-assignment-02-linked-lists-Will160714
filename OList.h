@@ -5,7 +5,6 @@
 class OList{
     private:
         Node *head;
-        int counter;
 
     public:
         OList();
