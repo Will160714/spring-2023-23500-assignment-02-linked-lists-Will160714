@@ -43,6 +43,11 @@ int main(){
     std::cout << "Reverse" << std::endl;
     test -> reverse();
     std::cout << test -> toString() << std::endl;
+    std::cout << std::endl;
+
+    //Delete
+    std::cout << "Delete" << std::endl;
+    delete test;
     return 0;
 }
 
