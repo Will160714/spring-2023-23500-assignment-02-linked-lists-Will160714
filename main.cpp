@@ -24,7 +24,7 @@ int main(){
     if(test -> contains("1"))
         std::cout << "1 is in OList" << std::endl;
     if(!(test -> contains("0")))
-        std::cout << "o is NOT in OList" << std::endl;
+        std::cout << "0 is NOT in OList" << std::endl;
     std::cout << std::endl;
 
     //Get
